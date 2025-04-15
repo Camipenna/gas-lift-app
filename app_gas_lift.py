@@ -1,5 +1,5 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import streamlit as st
 
 # Page configuration
@@ -24,19 +24,17 @@ p_bottom = p_top + (CONVERSION_FACTOR * density * depth)
 st.subheader("📌 Result:")
 st.write(f"**Bottomhole Pressure:** {p_bottom:.2f} psi")
 
-# Graph
+# Optimized chart using Streamlit
 st.subheader("📈 Pressure vs. Depth Chart")
 depths = np.linspace(0, depth, 50)
 pressures = p_top + CONVERSION_FACTOR * density * depths
 
-fig, ax = plt.subplots()
-ax.plot(depths, pressures, label="Pressure (psi)", color='blue')
-ax.set_xlabel("Depth (ft)")
-ax.set_ylabel("Pressure (psi)")
-ax.set_title("Hydrostatic Pressure Profile")
-ax.grid(True)
-ax.legend()
-st.pyplot(fig)
+df = pd.DataFrame({
+    'Depth (ft)': depths,
+    'Pressure (psi)': pressures
+})
+
+st.line_chart(df.set_index('Depth (ft)'))
 
 # Formula explanation
 with st.expander("🔍 View Calculation Formula"):
@@ -57,3 +55,4 @@ with st.expander("🔍 View Calculation Formula"):
 # Footer
 st.markdown("---")
 st.markdown("Developed by **Camila Penna Teixeira** · April 2025")
+
