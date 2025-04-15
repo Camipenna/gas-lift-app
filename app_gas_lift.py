@@ -6,7 +6,7 @@ import streamlit as st
 st.set_page_config(page_title="Bottomhole Pressure Calculator - Gas Lift")
 st.title("🛢️ Gas Lift – Bottomhole Pressure Calculator")
 
-st.markdown("This application was developed by **Camila Penna Teixeira** to demonstrate technical knowledge in Petroleum Engineering, focusing on bottomhole pressure calculations in gas lift systems.")
+st.markdown("Built by Camila Penna Teixeira, this app is part of her learning journey in Petroleum Engineering, focusing on pressure calculations in gas lift operations.")
 
 # Sidebar input
 st.sidebar.header("Input Parameters")
